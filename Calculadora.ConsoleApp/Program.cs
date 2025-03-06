@@ -4,8 +4,8 @@
     {
         /*objetivos;
          * Descobrir Raiz de numero
-         * Raiz quadrada de um numero
-         * Fatorial de um numero
+         * Raiz quadrada de um numero(X)
+         * Fatorial de um numero(X)
          * */
         static void Main(string[] args)
         {
@@ -13,13 +13,14 @@
             Console.WriteLine("__________________________");
             Console.WriteLine("Calculadora Tabajara 2025");
             Console.WriteLine("--------------------------");
-            double n1, n2, res = 1;
+            double n1, n2, res;
             int n3;
             byte op;
 
             do
             {
-                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial -0. Sair");
+                res = 1;
+                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Raiz_Quadrada   -0. Sair");
                 op = byte.Parse(Console.ReadLine());
                 if (op != 0)
                 {
@@ -52,10 +53,17 @@
                         Console.Write("Digite o numero: ");
                         n3 = int.Parse(Console.ReadLine());
 
-                        for(int i = 1;i < n3; i++)
+                        for(int i = 1;i <= n3; i++)
                         {
                             res *= (double)i;
                         }
+                        Console.WriteLine("Reultado: " + res);
+                    }else if (op == 6)
+                    {
+                        Console.Write("Digite o numero: ");
+                        n3 = int.Parse(Console.ReadLine());
+                        n3 *= n3;
+                        res = n3;
                         Console.WriteLine("Reultado: " + res);
                     }
                     else
