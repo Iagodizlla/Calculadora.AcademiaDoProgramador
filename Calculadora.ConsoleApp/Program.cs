@@ -35,7 +35,7 @@
                         {
                             res = n1 * n2;
                         }
-                        else if (op == 4)
+                        else
                         {
                             res = n1 / n2;
                         }
