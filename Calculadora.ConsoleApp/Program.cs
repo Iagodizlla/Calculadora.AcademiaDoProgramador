@@ -5,7 +5,9 @@
         static void Main(string[] args)
         {
             //Academia do Programador
+            Console.WriteLine("________________________________");
             Console.WriteLine("Calculadora Tabajara 2025");
+            Console.WriteLine("________________________________");
             double n1, n2, res = 0;
             byte op;
             do
