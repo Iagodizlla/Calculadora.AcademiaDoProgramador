@@ -3,8 +3,12 @@
     internal class Program
     {
         /*objetivos;
-         * Descobrir Raiz de numero
-         * Raiz quadrada de um numero(X)
+         * Soma(X)
+         * Subtracao(X)
+         * Multiplicacao(X)
+         * Divisao(X)
+         * Descobrir Raiz de numero(X)
+         * Potenciacao(X)
          * Fatorial de um numero(X)
          * */
         static void Main(string[] args)
@@ -20,7 +24,7 @@
             do
             {
                 res = 1;
-                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Raiz_Quadrada   -0. Sair");
+                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao\n7. Raiz_Quadrada(Teste)   -0. Sair");
                 op = byte.Parse(Console.ReadLine());
                 if (op != 0)
                 {
@@ -64,6 +68,12 @@
                         n3 = int.Parse(Console.ReadLine());
                         n3 *= n3;
                         res = n3;
+                        Console.WriteLine("Reultado: " + res);
+                    }else if (op == 7)
+                    {
+                        Console.Write("Digite o numero: ");
+                        n1 = double.Parse(Console.ReadLine());
+                        res = Math.Sqrt(n1);
                         Console.WriteLine("Reultado: " + res);
                     }
                     else
