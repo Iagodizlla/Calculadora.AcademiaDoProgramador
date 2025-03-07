@@ -11,8 +11,8 @@
          * Potenciacao(X)
          * Fatorial de um numero(X)
          * Tabuada(X)
-         * Historico
-         * */
+         * Historico(X, Arrumar bugs da tabuada) - colocar o 'op' como array deve resolver
+         */
         static void Main(string[] args)
         {
             //Academia do Programador
@@ -20,12 +20,11 @@
             Console.WriteLine("Calculadora Tabajara 2025");
             Console.WriteLine("--------------------------");
             double n1, n2, res;
-            int n3, na = 0, n4;
+            int n3, na = 0, n4 = 0;
             byte op;
             double[] nv = new double[99];
             double[] nv2 = new double[99];
             double[] nv3 = new double[99];
-
 
             do
             {
@@ -97,9 +96,8 @@
                         //Potenciacao(²)
                         else if (op == 6)
                         {
-                            n3 *= n3;
+                            res = n3 * n3;
                             //res = Math.Pow(n3, 2);
-                            res = n3;
                         }
                         //Potenciacao(n)
                         else if (op == 7)
@@ -143,9 +141,22 @@
                         Console.Write("Ate que numero vai a tabuada? ");
                         n4 = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("_____________");
+                        if (na < nv.Length)
+                        {
+                            nv[na] = n3;
+                            nv2[na] = n4;
+                            na++;
+                        }
+                        //Verificando se o histórico está cheio
+                        else
+                        {
+                            Console.WriteLine("\nHistórico cheio!\n");
+                        }
+                        Console.WriteLine("Reultado: " + res);
+
+                        Console.WriteLine("____________");
                         Console.WriteLine("Tabuada do " + n3);
-                        Console.WriteLine("-------------");
+                        Console.WriteLine("------------");
 
                         for (int i = 0; i <= n4; i++)
                         {
@@ -173,7 +184,7 @@
                              */
 
                             //Verificando a operação
-                            if ((nv[i] + nv2[i]) == nv3[i])
+                            if (nv[i] + nv2[i] == nv3[i])
                             {
                                 Console.WriteLine(nv[i] + " + " + nv2[i] + " = " + nv3[i]);
                             }
@@ -197,9 +208,13 @@
                             {
                                 Console.WriteLine("Raiz Quadrada de " + nv[i] + " = " + nv3[i]);
                             }
+                            else if (Math.Pow(nv[i], 2) == nv3[i])
+                            {
+                                Console.WriteLine(nv[i] + " ^ 2 = " + nv3[i]);
+                            }
                             else
                             {
-                                Console.WriteLine(nv[i] + " ^ ² = " + nv3[i]);
+                                Console.WriteLine($"Tabuada do {nv[i]} ao {nv2[i]}");
                             }
                         }
                     }
