@@ -11,7 +11,7 @@
          * Potenciacao(X)
          * Fatorial de um numero(X)
          * Tabuada(X)
-         * Historico(X, Arrumar bugs da tabuada) - colocar o 'op' como array deve resolver
+         * Historico(X, Arrumar bugs da tabuada e fatorial) - colocar o 'op' como array deve resolver
          */
         static void Main(string[] args)
         {
@@ -29,9 +29,8 @@
             do
             {
                 res = 1;
-                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao" +
-                    "\n4. Divisao   -5. Fatorial   -6. Potenciacao(²)   -7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada" +
-                    "\n10. Historico   -0. Sair");
+                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
+                "\n-7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -0. Sair");
                 op = byte.Parse(Console.ReadLine());
                 if (op != 0)
                 {
@@ -79,7 +78,7 @@
                         }
 
 
-                        Console.WriteLine("Reultado: " + res);
+                        Console.WriteLine("Resultado: " + res);
                     }
                     else if (op >= 5 && op <= 8)
                     {
@@ -102,7 +101,7 @@
                         //Potenciacao(n)
                         else if (op == 7)
                         {
-                            Console.WriteLine("Digite a potencia: ");
+                            Console.Write("Digite a potencia: ");
                             n4 = int.Parse(Console.ReadLine());
 
                             nv2[na] = n4;
@@ -130,7 +129,7 @@
                         {
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
-                        Console.WriteLine("Reultado: " + res);
+                        Console.WriteLine("Resultado: " + res);
                     }
                     //Tabuada
                     else if (op == 9)
@@ -152,7 +151,7 @@
                         {
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
-                        Console.WriteLine("Reultado: " + res);
+                        Console.WriteLine("Resultado: " + res);
 
                         Console.WriteLine("____________");
                         Console.WriteLine("Tabuada do " + n3);
@@ -206,7 +205,7 @@
                             }
                             else if (Math.Sqrt(nv[i]) == nv3[i])
                             {
-                                Console.WriteLine("Raiz Quadrada de " + nv[i] + " = " + nv3[i]);
+                                Console.WriteLine("Raiz de " + nv[i] + " = " + nv3[i]);
                             }
                             else if (Math.Pow(nv[i], 2) == nv3[i])
                             {
