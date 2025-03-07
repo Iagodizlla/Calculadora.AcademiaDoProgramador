@@ -24,7 +24,7 @@
             do
             {
                 res = 1;
-                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao\n7. Raiz_Quadrada(Teste)   -0. Sair");
+                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao   -7. Raiz_Quadrada(Teste)\n0. Sair");
                 op = byte.Parse(Console.ReadLine());
                 if (op != 0)
                 {
@@ -69,7 +69,7 @@
                             n3 *= n3;
                             res = n3;
                         }
-                        else if (op == 7)
+                        else
                         {
                             res = Math.Sqrt(n3);
                         }
