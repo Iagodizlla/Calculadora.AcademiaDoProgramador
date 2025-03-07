@@ -10,6 +10,8 @@
          * Descobrir Raiz de numero(X)
          * Potenciacao(X)
          * Fatorial de um numero(X)
+         * Tabuada(X)
+         * Historico
          * */
         static void Main(string[] args)
         {
@@ -18,15 +20,19 @@
             Console.WriteLine("Calculadora Tabajara 2025");
             Console.WriteLine("--------------------------");
             double n1, n2, res;
-            int n3;
+            int n3, na = 0, n4;
             byte op;
+            double[] nv = new double[99];
+            double[] nv2 = new double[99];
+            double[] nv3 = new double[99];
+
 
             do
             {
                 res = 1;
                 Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao" +
-                    "\n4. Divisao   -5. Fatorial   -6. Potenciacao(2)   -7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada" +
-                    "\n0. Sair");
+                    "\n4. Divisao   -5. Fatorial   -6. Potenciacao(²)   -7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada" +
+                    "\n10. Historico   -0. Sair");
                 op = byte.Parse(Console.ReadLine());
                 if (op != 0)
                 {
@@ -36,6 +42,7 @@
                         n1 = double.Parse(Console.ReadLine());
                         Console.Write("Digite o segundo numero: ");
                         n2 = double.Parse(Console.ReadLine());
+
 
                         //Soma
                         if (op == 1)
@@ -57,6 +64,22 @@
                         {
                             res = n1 / n2;
                         }
+
+                        //Guardando os valores no hitórico
+                        if (na < nv.Length)
+                        {
+                            nv[na] = n1;
+                            nv2[na] = n2;
+                            nv3[na] = res;
+                            na++;
+                        }
+                        //Verificando se o histórico está cheio
+                        else
+                        {
+                            Console.WriteLine("\nHistórico cheio!\n");
+                        }
+
+
                         Console.WriteLine("Reultado: " + res);
                     }
                     else if (op >= 5 && op <= 8)
@@ -71,18 +94,22 @@
                                 res *= (double)i;
                             }
                         }
-                        //Potenciacao
+                        //Potenciacao(²)
                         else if (op == 6)
                         {
                             n3 *= n3;
+                            //res = Math.Pow(n3, 2);
                             res = n3;
                         }
                         //Potenciacao(n)
                         else if (op == 7)
                         {
                             Console.WriteLine("Digite a potencia: ");
-                            int n4 = int.Parse(Console.ReadLine());
+                            n4 = int.Parse(Console.ReadLine());
 
+                            nv2[na] = n4;
+
+                            //res = Math.Pow(n3, n4);
                             for (int i = 1; i <= n4; i++)
                             {
                                 res *= n3;
@@ -93,6 +120,18 @@
                         {
                             res = Math.Sqrt(n3);
                         }
+
+                        if (na < nv.Length)
+                        {
+                            nv[na] = n3;
+                            nv3[na] = res;
+                            na++;
+                        }
+                        //Verificando se o histórico está cheio
+                        else
+                        {
+                            Console.WriteLine("\nHistórico cheio!\n");
+                        }
                         Console.WriteLine("Reultado: " + res);
                     }
                     //Tabuada
@@ -102,15 +141,66 @@
                         n3 = int.Parse(Console.ReadLine());
 
                         Console.Write("Ate que numero vai a tabuada? ");
-                        int n4 = int.Parse(Console.ReadLine());
+                        n4 = int.Parse(Console.ReadLine());
 
                         Console.WriteLine("_____________");
-                        Console.WriteLine("Tabuada do "+n3);
+                        Console.WriteLine("Tabuada do " + n3);
                         Console.WriteLine("-------------");
 
                         for (int i = 0; i <= n4; i++)
                         {
                             Console.WriteLine(n3 + " x " + i + " = " + (n3 * i));
+                        }
+                    }
+                    else if (op == 10)
+                    {
+                        Console.WriteLine("_________");
+                        Console.WriteLine("Historico");
+                        Console.WriteLine("---------\n");
+
+                        //Visualizando o histórico
+                        for (int i = 0; i < na; i++)
+                        {
+                            /** 
+                             * Soma(X)
+                             * Subtracao(X)
+                             * Multiplicacao(X)
+                             * Divisao(X)
+                             * Raiz(X)
+                             * Potenciacao(X)
+                             * Fatorial(X)
+                             * Tabuada
+                             */
+
+                            //Verificando a operação
+                            if ((nv[i] + nv2[i]) == nv3[i])
+                            {
+                                Console.WriteLine(nv[i] + " + " + nv2[i] + " = " + nv3[i]);
+                            }
+                            else if ((nv[i] - nv2[i]) == nv3[i])
+                            {
+                                Console.WriteLine(nv[i] + " - " + nv2[i] + " = " + nv3[i]);
+                            }
+                            else if ((nv[i] * nv2[i]) == nv3[i])
+                            {
+                                Console.WriteLine(nv[i] + " * " + nv2[i] + " = " + nv3[i]);
+                            }
+                            else if ((nv[i] / nv2[i]) == nv3[i])
+                            {
+                                Console.WriteLine(nv[i] + " / " + nv2[i] + " = " + nv3[i]);
+                            }
+                            else if (Math.Pow(nv[i], nv2[i]) == nv3[i])
+                            {
+                                Console.WriteLine(nv[i] + " ^ " + nv2[i] + " = " + nv3[i]);
+                            }
+                            else if (Math.Sqrt(nv[i]) == nv3[i])
+                            {
+                                Console.WriteLine("Raiz Quadrada de " + nv[i] + " = " + nv3[i]);
+                            }
+                            else
+                            {
+                                Console.WriteLine(nv[i] + " ^ ² = " + nv3[i]);
+                            }
                         }
                     }
                     //Opcao Invalida
