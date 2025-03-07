@@ -31,7 +31,7 @@
                     if (op >= 1 && op <= 4)
                     {
                         Console.Write("Digite o primeiro numero: ");
-                        n1 = Convert.ToDouble(Console.ReadLine());
+                        n1 = double.Parse(Console.ReadLine());
                         Console.Write("Digite o segundo numero: ");
                         n2 = double.Parse(Console.ReadLine());
 
@@ -52,28 +52,27 @@
                             res = n1 / n2;
                         }
                         Console.WriteLine("Reultado: " + res);
-                    }else if(op == 5)
+                    }
+                    else if (op >= 5 && op <= 7)
                     {
                         Console.Write("Digite o numero: ");
                         n3 = int.Parse(Console.ReadLine());
-
-                        for(int i = 1;i <= n3; i++)
+                        if (op == 5)
                         {
-                            res *= (double)i;
+                            for (int i = 1; i <= n3; i++)
+                            {
+                                res *= (double)i;
+                            }
                         }
-                        Console.WriteLine("Reultado: " + res);
-                    }else if (op == 6)
-                    {
-                        Console.Write("Digite o numero: ");
-                        n3 = int.Parse(Console.ReadLine());
-                        n3 *= n3;
-                        res = n3;
-                        Console.WriteLine("Reultado: " + res);
-                    }else if (op == 7)
-                    {
-                        Console.Write("Digite o numero: ");
-                        n1 = double.Parse(Console.ReadLine());
-                        res = Math.Sqrt(n1);
+                        else if (op == 6)
+                        {
+                            n3 *= n3;
+                            res = n3;
+                        }
+                        else if (op == 7)
+                        {
+                            res = Math.Sqrt(n3);
+                        }
                         Console.WriteLine("Reultado: " + res);
                     }
                     else
