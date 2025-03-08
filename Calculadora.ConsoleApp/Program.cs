@@ -15,7 +15,7 @@
          * Saida do programa(X)
          * Baskara(X)
          * Media Aritmetica
-         * Número Primo
+         * Número Primo(X)
          * Conversor de Bases[Binario, Octal, Decimal, Hexadecimal]
          * Modo Financeiro[Juros Simples e Composto, Desconto, Acréscimo]
          */
@@ -43,7 +43,7 @@
             {
                 res = 1;
                 Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
-                "\n-7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -0. Sair");
+                "\n-7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo   -0. Sair");
                 op[na] = byte.Parse(Console.ReadLine());
 
                 if (op[na] != 0)
@@ -176,48 +176,7 @@
                             Console.WriteLine(n3 + " x " + i + " = " + (n3 * i));
                         }
                     }
-                    //Baskara
-                    else if (op[na] == 11)
-                    {
-                        Console.WriteLine("Digite o valor de A: ");
-                        n3 = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Digite o valor de B: ");
-                        n4 = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Digite o valor de C: ");
-                        n5 = int.Parse(Console.ReadLine());
-
-                        delta = (int)Math.Pow(n4, 2) - 4 * n3 * n5;
-                        
-                        if(delta > 0)
-                        {
-                            x1[na] = (double)((-n4 + Math.Sqrt(delta)) / 2 * n3);
-                            x2[na] = (double)((-n4 - Math.Sqrt(delta)) / 2 * n3);
-                            del[na] = '1';
-                        }
-                        else if(delta == 0)
-                        {
-                            x1[na] = -n4 / (2 * n3);
-                            del[na] = '2';
-                        }
-                        else
-                        {
-                            del[na] = '3';
-                        }
-                        //Guardando os valores no hitórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n3;
-                            nv2[na] = n4;
-                            nv3[na] = n5;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-
-                    }
+                    //Historico
                     else if (op[na] == 10)
                     {
                         Console.WriteLine("_________");
@@ -236,6 +195,8 @@
                              * Potenciacao 2 e N(X)
                              * Fatorial(X)
                              * Tabuada(X)
+                             * Baskara(X)
+                             * Numero Primo(X)
                              */
 
                             //Verificando a operação
@@ -290,6 +251,99 @@
                                     Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || Não possui raizes reais");
                                 }
                             }
+                            else if (op[i] == 12)
+                            {
+                                if (nv2[i] == 1)
+                                {
+                                    Console.WriteLine(nv[i] + " é primo");
+                                }
+                                else
+                                {
+                                    Console.WriteLine(nv[i] + " não é primo");
+                                }
+                            }
+                        }
+                    }
+                    //Baskara
+                    else if (op[na] == 11)
+                    {
+                        Console.Write("Digite o valor de A: ");
+                        n3 = int.Parse(Console.ReadLine());
+                        Console.Write("Digite o valor de B: ");
+                        n4 = int.Parse(Console.ReadLine());
+                        Console.Write("Digite o valor de C: ");
+                        n5 = int.Parse(Console.ReadLine());
+
+                        delta = (int)Math.Pow(n4, 2) - 4 * n3 * n5;
+
+                        if (delta > 0)
+                        {
+                            x1[na] = (double)((-n4 + Math.Sqrt(delta)) / 2 * n3);
+                            x2[na] = (double)((-n4 - Math.Sqrt(delta)) / 2 * n3);
+                            del[na] = '1';
+                            Console.WriteLine($"Delta: {delta}, X1: {x1[na]}, X2: {x2[na]}");
+                        }
+                        else if (delta == 0)
+                        {
+                            x1[na] = -n4 / (2 * n3);
+                            del[na] = '2';
+                            Console.WriteLine($"Delta: {delta}, X: {x1[na]}");
+                        }
+                        else
+                        {
+                            del[na] = '3';
+                            Console.WriteLine($"Delta: {delta}, Não possui raizes reais");
+                        }
+                        //Guardando os valores no hitórico
+                        if (na < nv.Length)
+                        {
+                            nv[na] = n3;
+                            nv2[na] = n4;
+                            nv3[na] = n5;
+                            na++;
+                        }
+                        //Verificando se o histórico está cheio
+                        else
+                        {
+                            Console.WriteLine("\nHistórico cheio!\n");
+                        }
+
+                    }
+                    //Numero Primo
+                    else if (op[na] == 12)
+                    {
+                        zero = false;
+                        Console.Write("Digite o numero: ");
+                        n3 = int.Parse(Console.ReadLine());
+                        for (int i = 2; i < n3; i++)
+                        {
+                            if (n3 % i == 0)
+                            {
+                                zero = true;
+                                break;
+                            }
+                        }
+                        if (zero == false)
+                        {
+                            Console.WriteLine("O numero " + n3 + " é primo");
+                            n4 = 1;
+                        }
+                        else
+                        {
+                            Console.WriteLine("O numero " + n3 + " não é primo");
+                            n4 = 2;
+                        }
+                        //Guardando os valores no hitórico
+                        if (na < nv.Length)
+                        {
+                            nv[na] = n3;
+                            nv2[na] = n4;
+                            na++;
+                        }
+                        //Verificando se o histórico está cheio
+                        else
+                        {
+                            Console.WriteLine("\nHistórico cheio!\n");
                         }
                     }
                     //Opcao Invalida
