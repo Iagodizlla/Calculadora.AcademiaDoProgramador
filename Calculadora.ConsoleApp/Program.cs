@@ -18,6 +18,7 @@
          * Número Primo(X)
          * Conversor de Bases[Binario, Octal, Decimal, Hexadecimal]
          * Modo Financeiro[Juros Simples e Composto, Desconto, Acréscimo]
+         * Criacao de Funcoes(Fazer em aula)
          */
         static void Main(string[] args)
         {
@@ -42,8 +43,10 @@
             while (true)
             {
                 res = 1;
-                Console.WriteLine("\nQual opcao vc deseja?\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
-                "\n-7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo   -0. Sair");
+                Console.WriteLine("\nQual opcao vc deseja?" +
+                "\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
+                "\n-7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo" +
+                "\n0. Sair");
                 op[na] = byte.Parse(Console.ReadLine());
 
                 if (op[na] != 0)
