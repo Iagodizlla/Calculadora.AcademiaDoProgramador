@@ -14,7 +14,7 @@
          * Historico(X)
          * Saida do programa(X)
          * Baskara(X)
-         * Media Aritmetica
+         * Media Aritmetica(X)
          * Número Primo(X)
          * Conversor de Bases[Binario, Octal, Decimal, Hexadecimal]
          * Modo Financeiro[Juros Simples e Composto, Desconto, Acréscimo]
@@ -36,6 +36,7 @@
             double[] nv = new double[99];
             double[] nv2 = new double[99];
             double[] nv3 = new double[99];
+            double[] n6 = new double[99];
             double[] x1 = new double[99];
             double[] x2 = new double[99];
             char[] del = new char[99];
@@ -45,8 +46,8 @@
                 res = 1;
                 Console.WriteLine("\nQual opcao vc deseja?" +
                 "\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
-                "\n-7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo" +
-                "\n0. Sair");
+                "\n7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo" +
+                "\n13. Media_Aritimetica   -0. Sair");
                 op[na] = byte.Parse(Console.ReadLine());
 
                 if (op[na] != 0)
@@ -200,6 +201,7 @@
                              * Tabuada(X)
                              * Baskara(X)
                              * Numero Primo(X)
+                             * Media Aritmetica(X)
                              */
 
                             //Verificando a operação
@@ -263,6 +265,21 @@
                                 else
                                 {
                                     Console.WriteLine(nv[i] + " não é primo");
+                                }
+                            }
+                            else if (op[i] == 13)
+                            {
+                                Console.Write($"Media dos numeros: (");
+                                for (int j = 0; j < nv[i]; j++)
+                                {
+                                    if (j == nv[i] - 1)
+                                    {
+                                        Console.Write($" {n6[j]}) = {nv3[i]}");
+                                    }
+                                    else
+                                    {
+                                        Console.Write($" {n6[j]},");
+                                    }
                                 }
                             }
                         }
@@ -348,6 +365,37 @@
                         {
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
+                    }
+                    //Media Aritmetica
+                    else if (op[na] == 13)
+                    {
+                        n6[0] = 0;
+                        res = 0;
+                        Console.Write("Digite a quantidade de numeros: ");
+                        n1 = double.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < n1; i++)
+                        {
+                            Console.Write("Digite o numero: ");
+                            n6[i] = double.Parse(Console.ReadLine());
+                            res += n6[i];
+                        }
+                        res /= n1;
+
+                        //Guardando os valores no hitórico
+                        if (na < nv.Length)
+                        {
+                            nv[na] = n1;
+                            nv3[na] = res;
+                            na++;
+                        }
+                        //Verificando se o histórico está cheio
+                        else
+                        {
+                            Console.WriteLine("\nHistórico cheio!\n");
+                        }
+
+                        Console.WriteLine("Media: " + res);
                     }
                     //Opcao Invalida
                     else
