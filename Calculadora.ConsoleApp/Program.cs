@@ -47,7 +47,7 @@
                 Console.WriteLine("\nQual opcao vc deseja?" +
                 "\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
                 "\n7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo" +
-                "\n13. Media_Aritimetica   -0. Sair");
+                "\n13. Media_Aritimetica   -14. Modo_Financeiro   -0. Sair");
                 op[na] = byte.Parse(Console.ReadLine());
 
                 if (op[na] != 0)
@@ -77,7 +77,13 @@
                         //Divisao
                         else
                         {
-                            res = n1 / n2;
+                            if (n2 == 0)
+                            {
+                                Console.WriteLine("Nao pode divisao por zero!!!");
+                                Console.ReadLine();
+                                continue;
+                            }
+                             res = n1 / n2;
                         }
 
                         //Guardando os valores no hitórico
@@ -94,7 +100,7 @@
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
 
-                        Console.WriteLine("Resultado: " + res);
+                        Console.WriteLine("Resultado: " + res.ToString("F5"));
                     }
                     else if (op[na] >= 5 && op[na] <= 8)
                     {
@@ -146,7 +152,7 @@
                         {
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
-                        Console.WriteLine("Resultado: " + res);
+                        Console.WriteLine("Resultado: " + res.ToString("F5"));
                     }
                     //Tabuada
                     else if (op[na] == 9)
@@ -177,7 +183,7 @@
                         //Tabuada sendo feita
                         for (int i = 0; i <= n4; i++)
                         {
-                            Console.WriteLine(n3 + " x " + i + " = " + (n3 * i));
+                            Console.WriteLine($"{n3} x  {i}  =  {(n3 * i)}");
                         }
                     }
                     //Historico
@@ -219,7 +225,7 @@
                             }
                             else if (op[i] == 4)
                             {
-                                Console.WriteLine(nv[i] + " / " + nv2[i] + " = " + nv3[i]);
+                                Console.WriteLine(nv[i] + " / " + nv2[i] + " = " + nv3[i].ToString("F5"));
                             }
                             else if (op[i] == 5)
                             {
@@ -235,7 +241,7 @@
                             }
                             else if (op[i] == 8)
                             {
-                                Console.WriteLine("Raiz de " + nv[i] + " = " + nv3[i]);
+                                Console.WriteLine("Raiz de " + nv[i] + " = " + nv3[i].ToString("F5"));
                             }
                             else if (op[i] == 9)
                             {
@@ -245,11 +251,11 @@
                             {
                                 if (del[i] == '1')
                                 {
-                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || x1 = {x1[i]} e x2 = {x2[i]}");
+                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || x1 = {x1[i].ToString("F5")} e x2 = {x2[i].ToString("F5")}");
                                 }
                                 else if (del[i] == '2')
                                 {
-                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || x = {x1[i]}");
+                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || x = {x1[i].ToString("F5")}");
                                 }
                                 else
                                 {
@@ -274,7 +280,7 @@
                                 {
                                     if (j == nv[i] - 1)
                                     {
-                                        Console.Write($" {n6[j]}) = {nv3[i]}");
+                                        Console.Write($" {n6[j]}) = {nv3[i].ToString("F5")}");
                                     }
                                     else
                                     {
@@ -301,7 +307,7 @@
                             x1[na] = (double)((-n4 + Math.Sqrt(delta)) / 2 * n3);
                             x2[na] = (double)((-n4 - Math.Sqrt(delta)) / 2 * n3);
                             del[na] = '1';
-                            Console.WriteLine($"Delta: {delta}, X1: {x1[na]}, X2: {x2[na]}");
+                            Console.WriteLine($"Delta: {delta}, X1: {x1[na].ToString("F5")}, X2: {x2[na].ToString("F5")}");
                         }
                         else if (delta == 0)
                         {
@@ -312,7 +318,7 @@
                         else
                         {
                             del[na] = '3';
-                            Console.WriteLine($"Delta: {delta}, Não possui raizes reais");
+                            Console.WriteLine($"Delta: {delta.ToString("F5")}, Não possui raizes reais");
                         }
                         //Guardando os valores no hitórico
                         if (na < nv.Length)
@@ -395,7 +401,11 @@
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
 
-                        Console.WriteLine("Media: " + res);
+                        Console.WriteLine("Media: " + res.ToString("F5"));
+                    }
+                    else if (op[na] == 14)
+                    {
+                        Console.WriteLine("Em desenvolvimento...");
                     }
                     //Opcao Invalida
                     else
