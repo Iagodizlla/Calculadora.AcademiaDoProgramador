@@ -86,7 +86,7 @@
                              res = n1 / n2;
                         }
 
-                        //Guardando os valores no hitórico
+                        //Guardando os valores no histórico
                         if (na < nv.Length)
                         {
                             nv[na] = n1;
@@ -137,7 +137,16 @@
                         //Raiz Quadrada
                         else
                         {
-                            res = Math.Sqrt(n3);
+                            if (n3 < 0)
+                            {
+                                Console.WriteLine("Não existe raiz de número negativo!");
+                                Console.ReadLine();
+                                continue;
+                            }
+                            else
+                            {
+                                res = Math.Sqrt(n3);
+                            }
                         }
 
                         //Guardando os valores no hitórico
@@ -307,13 +316,13 @@
                             x1[na] = (double)((-n4 + Math.Sqrt(delta)) / 2 * n3);
                             x2[na] = (double)((-n4 - Math.Sqrt(delta)) / 2 * n3);
                             del[na] = '1';
-                            Console.WriteLine($"Delta: {delta}, X1: {x1[na].ToString("F5")}, X2: {x2[na].ToString("F5")}");
+                            Console.WriteLine($"Delta: {delta.ToString("F5")}, X1: {x1[na].ToString("F5")}, X2: {x2[na].ToString("F5")}");
                         }
                         else if (delta == 0)
                         {
                             x1[na] = -n4 / (2 * n3);
                             del[na] = '2';
-                            Console.WriteLine($"Delta: {delta}, X: {x1[na]}");
+                            Console.WriteLine($"Delta: {delta.ToString("F5")}, X: {x1[na].ToString("F5")}");
                         }
                         else
                         {
