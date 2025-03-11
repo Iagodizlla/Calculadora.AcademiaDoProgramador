@@ -16,9 +16,6 @@
          * Baskara(X)
          * Media Aritmetica(X)
          * Número Primo(X)
-         * Conversor de Bases[Binario, Octal, Decimal, Hexadecimal]
-         * Modo Financeiro[Juros Simples e Composto, Desconto, Acréscimo]
-         * Criacao de Funcoes(Fazer em aula)
          */
         static void Main(string[] args)
         {
@@ -44,10 +41,9 @@
             while (true)
             {
                 res = 1;
-                Console.WriteLine("\nQual opcao vc deseja?" +
-                "\n1. Soma   -2. Subtracao   -3. Multiplicacao   -4. Divisao   -5. Fatorial   -6. Potenciacao(²)"+
-                "\n7. Potenciacao(n)   -8. Raiz_Quadrada   -9. Tabuada   -10. Historico   -11. Baskara   -12. Numero_Primo" +
-                "\n13. Media_Aritimetica   -14. Modo_Financeiro   -0. Sair");
+                Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
+                    "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
+                    "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
                 op[na] = byte.Parse(Console.ReadLine());
 
                 if (op[na] != 0)
@@ -205,20 +201,6 @@
                         //Visualizando o histórico
                         for (int i = 0; i < na; i++)
                         {
-                            /** 
-                             * Soma(X)
-                             * Subtracao(X)
-                             * Multiplicacao(X)
-                             * Divisao(X)
-                             * Raiz(X)
-                             * Potenciacao 2 e N(X)
-                             * Fatorial(X)
-                             * Tabuada(X)
-                             * Baskara(X)
-                             * Numero Primo(X)
-                             * Media Aritmetica(X)
-                             */
-
                             //Verificando a operação
                             if (op[i] == 1)
                             {
@@ -411,10 +393,6 @@
                         }
 
                         Console.WriteLine("Media: " + res.ToString("F5"));
-                    }
-                    else if (op[na] == 14)
-                    {
-                        Console.WriteLine("Em desenvolvimento...");
                     }
                     //Opcao Invalida
                     else
