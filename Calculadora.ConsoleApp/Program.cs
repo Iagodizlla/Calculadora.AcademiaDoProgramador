@@ -286,8 +286,8 @@ namespace Calculadora.ConsoleApp
                                     }
                                 }
                             }
-                            Console.ReadLine();
                         }
+                        Console.ReadLine();
                     }
                     //Baskara
                     else if (op[na] == 11)
