@@ -1,4 +1,7 @@
-﻿namespace Calculadora.ConsoleApp
+﻿using System;
+using System.Data;
+
+namespace Calculadora.ConsoleApp
 {
     internal class Program
     {
@@ -41,6 +44,7 @@
             while (true)
             {
                 res = 1;
+                Console.Clear();
                 Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
                     "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
                     "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
@@ -97,6 +101,7 @@
                         }
 
                         Console.WriteLine("Resultado: " + res.ToString("F5"));
+                        Console.ReadLine();
                     }
                     else if (op[na] >= 5 && op[na] <= 8)
                     {
@@ -158,6 +163,7 @@
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
                         Console.WriteLine("Resultado: " + res.ToString("F5"));
+                        Console.ReadLine();
                     }
                     //Tabuada
                     else if (op[na] == 9)
@@ -190,6 +196,7 @@
                         {
                             Console.WriteLine($"{n3} x  {i}  =  {(n3 * i)}");
                         }
+                        Console.ReadLine();
                     }
                     //Historico
                     else if (op[na] == 10)
@@ -279,6 +286,7 @@
                                     }
                                 }
                             }
+                            Console.ReadLine();
                         }
                     }
                     //Baskara
@@ -324,6 +332,7 @@
                         {
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
+                        Console.ReadLine();
 
                     }
                     //Numero Primo
@@ -362,11 +371,12 @@
                         {
                             Console.WriteLine("\nHistórico cheio!\n");
                         }
+                        Console.ReadLine();
                     }
                     //Media Aritmetica
                     else if (op[na] == 13)
                     {
-                        n6[0] = 0;
+                        n6[0] = 0; 
                         res = 0;
                         Console.Write("Digite a quantidade de numeros: ");
                         n1 = double.Parse(Console.ReadLine());
@@ -393,11 +403,13 @@
                         }
 
                         Console.WriteLine("Media: " + res.ToString("F5"));
+                        Console.ReadLine();
                     }
                     //Opcao Invalida
                     else
                     {
                         Console.WriteLine("Opcao Invalida!!");
+                        Console.ReadLine();
                     }
                 }
                 //Finalizando o programa
