@@ -39,16 +39,9 @@ namespace Calculadora.ConsoleApp
 
             while (true)
             {
-                res = 1;
-                Console.Clear();
 
-                Console.WriteLine("__________________________");
-                Console.WriteLine("Calculadora Tabajara 2025");
-                Console.WriteLine("--------------------------\n");
-                Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
-                    "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
-                    "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
-                op[na] = byte.Parse(Console.ReadLine());
+                res = 1;
+                op[na] = ExibirMenu();
 
                 if (op[na] != 0)
                 {
@@ -418,6 +411,21 @@ namespace Calculadora.ConsoleApp
                     break;
                 }
             }
+        }
+
+        static byte ExibirMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("__________________________");
+            Console.WriteLine("Calculadora Tabajara 2025");
+            Console.WriteLine("--------------------------\n");
+            Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
+                "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
+                "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
+
+            byte op = byte.Parse(Console.ReadLine());
+            return op;
         }
     }
 }
