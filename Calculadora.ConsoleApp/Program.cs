@@ -10,13 +10,11 @@ namespace Calculadora.ConsoleApp
 
         static void Main(string[] args)
         {
-            double n1 = 0, n2 = 0, n3 = 0, res;
-            double[] n6 = new double[99];
+            double n1 = 0, n2 = 0, n3 = 0;
             string[] historico = new string[99];
 
             while (true)
             {
-                res = 1;
                 //Exibir o menu
                 op[na] = ExibirMenu();
 
@@ -25,12 +23,12 @@ namespace Calculadora.ConsoleApp
                     if (op[na] >= 1 && op[na] <= 4)
                     {
                         //Soma, Subtracao, Multiplicacao e Divisao
-                        historico[na] = OperacoesBasicas(n1, n2, res);
+                        historico[na] = OperacoesBasicas(n1, n2, n3);
                     }
                     else if (op[na] >= 5 && op[na] <= 8)
                     {
                         //Fatorial, Potenciacao(²), Potenciacao(n) e Raiz Quadrada
-                        historico[na] = OperacoesMedias(n1, n2, res);
+                        historico[na] = OperacoesMedias(n1, n2, n3);
                     }
                     else if (op[na] == 9)
                     {
@@ -55,17 +53,18 @@ namespace Calculadora.ConsoleApp
                     else if (op[na] == 13)
                     {
                         //Media Aritmetica
-                        historico[na] = OperacaoMediaAritimetica(n1, res, n6);
+                        historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
                     }
                     else if (op[na] == 14)
                     {
                         //Modo Financeiro
-                        Console.WriteLine("Em desenvolvimento");
+                        historico[na] = OperacaoModoFinanceiro(n1, n2, n3);
                     }
                     else
                     {
                         //Opcao Invalida
                         Console.WriteLine("Opcao Invalida!!");
+                        continue;
                     }
                     na++;
                     Console.ReadLine();
@@ -84,6 +83,7 @@ namespace Calculadora.ConsoleApp
             Console.WriteLine("__________________________");
             Console.WriteLine("Calculadora Tabajara 2025");
             Console.WriteLine("--------------------------\n");
+
             Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
                 "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
                 "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
@@ -91,7 +91,7 @@ namespace Calculadora.ConsoleApp
             byte op = byte.Parse(Console.ReadLine()!);
             return op;
         }
-        static string OperacoesBasicas(double n1, double n2, double res)
+        static string OperacoesBasicas(double n1, double n2, double n3)
         {
             string historico = "";
             Console.Write("Digite o primeiro numero: ");
@@ -102,20 +102,20 @@ namespace Calculadora.ConsoleApp
             //Soma
             if (op[na] == 1)
             {
-                res = n1 + n2;
-                historico = $"{n1} + {n2} = {res}";
+                n3 = n1 + n2;
+                historico = $"{n1} + {n2} = {n3}";
             }
             //Subtracao
             else if (op[na] == 2)
             {
-                res = n1 - n2;
-                historico = $"{n1} - {n2} = {res}";
+                n3 = n1 - n2;
+                historico = $"{n1} - {n2} = {n3}";
             }
             //Multiplicacao
             else if (op[na] == 3)
             {
-                res = n1 * n2;
-                historico = $"{n1} * {n2} = {res}";
+                n3 = n1 * n2;
+                historico = $"{n1} * {n2} = {n3}";
             }
             //Divisao
             else if (op[na] == 4)
@@ -125,13 +125,13 @@ namespace Calculadora.ConsoleApp
                     Console.WriteLine("Nao pode divisao por zero!!!");
                     Console.ReadLine();
                 }
-                res = n1 / n2;
-                historico = $"{n1} / {n2} = {res}";
+                n3 = n1 / n2;
+                historico = $"{n1} / {n2} = {n3}";
             }
-            Console.WriteLine("Resultado: " + res.ToString("F5"));
+            Console.WriteLine("Resultado: " + n3.ToString("F5"));
             return historico;
         }
-        static string OperacoesMedias(double n1, double n2, double res)
+        static string OperacoesMedias(double n1, double n2, double n3)
         {
             string historico = "";
             Console.Write("Digite o numero: ");
@@ -141,15 +141,15 @@ namespace Calculadora.ConsoleApp
             {
                 for (int i = 1; i <= n1; i++)
                 {
-                    res *= (double)i;
+                    n3 *= (double)i;
                 }
-                historico = $"{n1}! = {res}";
+                historico = $"{n1}! = {n3}";
             }
             //Potenciacao(²)
             else if (op[na] == 6)
             {
-                res = Math.Pow(n1, 2);
-                historico = $"{n1} ^ 2 = {res}";
+                n3 = Math.Pow(n1, 2);
+                historico = $"{n1} ^ 2 = {n3}";
             }
             //Potenciacao(n)
             else if (op[na] == 7)
@@ -159,9 +159,9 @@ namespace Calculadora.ConsoleApp
 
                 for (int i = 1; i <= n2; i++)
                 {
-                    res = Math.Pow(n1, n2);
+                    n3 = Math.Pow(n1, n2);
                 }
-                historico = $"{n1} ^ {n2} = {res}";
+                historico = $"{n1} ^ {n2} = {n3}";
             }
             //Raiz Quadrada
             else
@@ -171,10 +171,10 @@ namespace Calculadora.ConsoleApp
                     Console.WriteLine("Não existe raiz de número negativo!");
                     Console.ReadLine();
                 }
-                res = Math.Sqrt(n1);
-                historico = $"Raiz de {n1} = {res.ToString("F5")}";
+                n3 = Math.Sqrt(n1);
+                historico = $"Raiz de {n1} = {n3.ToString("F5")}";
             }
-            Console.WriteLine("Resultado: " + res.ToString("F5"));
+            Console.WriteLine("Resultado: " + n3.ToString("F5"));
             return historico;
         }
         static string OperacaoTabuada(double n1, double n2)
@@ -201,7 +201,7 @@ namespace Calculadora.ConsoleApp
         static string OperacaoBaskara(double n1, double n2, double n3)
         {
             string historico = "";
-            double x1, x2, del;
+            double x1, x2;
             int delta;
 
             Console.Write("Digite o valor de A: ");
@@ -217,7 +217,6 @@ namespace Calculadora.ConsoleApp
             {
                 x1 = (double)((-n2 + Math.Sqrt(delta)) / 2 * n1);
                 x2 = (double)((-n2 - Math.Sqrt(delta)) / 2 * n1);
-                del = 1;
 
                 Console.WriteLine($"Delta: {delta.ToString("F5")}| X1: {x1.ToString("F5")}| X2: {x2.ToString("F5")}");
                 historico = $"Delta: {delta.ToString("F5")}| X1: {x1.ToString("F5")}| X2: {x2.ToString("F5")}";
@@ -225,13 +224,11 @@ namespace Calculadora.ConsoleApp
             else if (delta == 0)
             {
                 x1 = -n2 / (2 * n1);
-                del = 2;
                 Console.WriteLine($"Delta: {delta.ToString("F5")}| X: {x1.ToString("F5")}");
                 historico = $"Delta: {delta.ToString("F5")}| X: {x1.ToString("F5")}";
             }
             else
             {
-                del = 3;
                 Console.WriteLine($"Delta: {delta.ToString("F5")}| Não possui raizes reais");
                 historico = $"Delta: {delta.ToString("F5")}| Não possui raizes reais";
             }
@@ -276,23 +273,28 @@ namespace Calculadora.ConsoleApp
             }
             return historico;
         }
-        static string OperacaoMediaAritimetica(double n1, double res, double[] n6)
+        static string OperacaoMediaAritimetica(double n1, double n2, double n3)
         {
             string historico = "";
-            n6[0] = 0;
-            res = 0;
+            n3 = 0;
             Console.Write("Digite a quantidade de numeros: ");
             n1 = double.Parse(Console.ReadLine()!);
 
             for (int i = 0; i < n1; i++)
             {
                 Console.Write("Digite o numero: ");
-                n6[i] = double.Parse(Console.ReadLine()!);
-                res += n6[i];
+                n2 = double.Parse(Console.ReadLine()!);
+                n3 += n2;
             }
-            res /= n1;
-            Console.WriteLine("Media: " + res.ToString("F5"));
-            historico = $"Media: {res.ToString("F5")}";
+            n3 /= n1;
+            Console.WriteLine("Media: " + n3.ToString("F5"));
+            historico = $"Media: {n3.ToString("F5")}";
+            return historico;
+        }
+        static string OperacaoModoFinanceiro(double n1, double n2, double n3)
+        {
+            string historico = "Em desenvolvimento...";
+            Console.WriteLine("Em desenvolvimento...");
             return historico;
         }
     }
