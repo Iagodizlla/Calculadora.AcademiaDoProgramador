@@ -5,6 +5,7 @@ namespace Calculadora.ConsoleApp
 {
     internal class Program
     {
+        //Variaveis globais
         static int na = 0;
         static byte[] op = new byte[99];
 
@@ -13,17 +14,14 @@ namespace Calculadora.ConsoleApp
             string[] H = new string[99];
             while (true)
             {
-                //Exibir o menu
-                op[na] = ExibirMenu();
-
+                op[na] = ExibirMenu();//Exibir o menu
                 if (op[na] != 0)
                 {
-                    VerificarOpcao(H);
+                    VerificarOpcao(H);//verificar a opcao
                 }
                 else
                 {
-                    //Finaliza o programa
-                    break;
+                    break;//Finaliza o programa
                 }
             }
         }
@@ -49,6 +47,59 @@ namespace Calculadora.ConsoleApp
 
             byte op = byte.Parse(Console.ReadLine()!);
             return op;
+        }
+        static void VerificarOpcao(string[] historico)
+        {
+            double n1 = 0, n2 = 0, n3 = 0;
+
+            if (op[na] >= 1 && op[na] <= 4)
+            {
+                //Soma, Subtracao, Multiplicacao e Divisao
+                historico[na] = OperacoesBasicas(n1, n2, n3);
+            }
+            else if (op[na] >= 5 && op[na] <= 8)
+            {
+                //Fatorial, Potenciacao(²), Potenciacao(n) e Raiz Quadrada
+                historico[na] = OperacoesAvancadas(n1, n2, n3);
+            }
+            else if (op[na] == 9)
+            {
+                //Tabuada
+                historico[na] = OperacaoTabuada(n1, n2);
+            }
+            else if (op[na] == 10)
+            {
+                //Historico
+                MostrarHistorico(historico);
+            }
+            else if (op[na] == 11)
+            {
+                //Baskara
+                historico[na] = OperacaoBaskara(n1, n2, n3);
+            }
+            else if (op[na] == 12)
+            {
+                //Numero Primo
+                historico[na] = OperacaoNumeroPrimo(n1);
+            }
+            else if (op[na] == 13)
+            {
+                //Media Aritmetica
+                historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
+            }
+            else if (op[na] == 14)
+            {
+                //Modo Financeiro
+                historico[na] = OperacaoModoFinanceiro(n1, n2, n3);
+            }
+            else
+            {
+                //Opcao Invalida
+                Console.WriteLine("Opcao Invalida!!");
+                n3--;
+            }
+            na++;
+            Console.ReadLine();
         }
         static string OperacoesBasicas(double n1, double n2, double n3)
         {
@@ -219,7 +270,7 @@ namespace Calculadora.ConsoleApp
             Console.WriteLine(historicoCompleto);
             return historicoCompleto;
         }
-        static string OperacoNumeroPrimo(double n1)
+        static string OperacaoNumeroPrimo(double n1)
         {
             Console.Clear();
             Cabecalho();
@@ -275,59 +326,6 @@ namespace Calculadora.ConsoleApp
             Console.WriteLine("Em desenvolvimento...");
             na--;
             return historico;
-        }
-        static void VerificarOpcao(string[] historico)
-        {
-            double n1 = 0, n2 = 0, n3 = 0;
-
-            if (op[na] >= 1 && op[na] <= 4)
-            {
-                //Soma, Subtracao, Multiplicacao e Divisao
-                historico[na] = OperacoesBasicas(n1, n2, n3);
-            }
-            else if (op[na] >= 5 && op[na] <= 8)
-            {
-                //Fatorial, Potenciacao(²), Potenciacao(n) e Raiz Quadrada
-                historico[na] = OperacoesAvancadas(n1, n2, n3);
-            }
-            else if (op[na] == 9)
-            {
-                //Tabuada
-                historico[na] = OperacaoTabuada(n1, n2);
-            }
-            else if (op[na] == 10)
-            {
-                //Historico
-                MostrarHistorico(historico);
-            }
-            else if (op[na] == 11)
-            {
-                //Baskara
-                historico[na] = OperacaoBaskara(n1, n2, n3);
-            }
-            else if (op[na] == 12)
-            {
-                //Numero Primo
-                historico[na] = OperacoNumeroPrimo(n1);
-            }
-            else if (op[na] == 13)
-            {
-                //Media Aritmetica
-                historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
-            }
-            else if (op[na] == 14)
-            {
-                //Modo Financeiro
-                historico[na] = OperacaoModoFinanceiro(n1, n2, n3);
-            }
-            else
-            {
-                //Opcao Invalida
-                Console.WriteLine("Opcao Invalida!!");
-                n3--;
-            }
-            na++;
-            Console.ReadLine();
         }
     }
 }
