@@ -76,23 +76,33 @@ namespace Calculadora.ConsoleApp
                 }
             }
         }
-        static byte ExibirMenu()
+        static void Cabecalho()
         {
-            Console.Clear();
-
             Console.WriteLine("__________________________");
             Console.WriteLine("Calculadora Tabajara 2025");
             Console.WriteLine("--------------------------\n");
+        }
+        static byte ExibirMenu()
+        {
+            Console.Clear();
+            Cabecalho();
 
-            Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
+            Console.WriteLine("__________________________");
+            Console.WriteLine("Qual opcao vc deseja?");
+            Console.WriteLine("--------------------------");
+
+            Console.WriteLine("-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
                 "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
                 "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
+            Console.WriteLine("--------------------------");
 
             byte op = byte.Parse(Console.ReadLine()!);
             return op;
         }
         static string OperacoesBasicas(double n1, double n2, double n3)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "";
             Console.Write("Digite o primeiro numero: ");
             n1 = double.Parse(Console.ReadLine()!);
@@ -133,6 +143,8 @@ namespace Calculadora.ConsoleApp
         }
         static string OperacoesMedias(double n1, double n2, double n3)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "";
             Console.Write("Digite o numero: ");
             n1 = int.Parse(Console.ReadLine()!);
@@ -179,6 +191,8 @@ namespace Calculadora.ConsoleApp
         }
         static string OperacaoTabuada(double n1, double n2)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "";
             Console.Write("Digite o numero: ");
             n1 = int.Parse(Console.ReadLine()!);
@@ -200,6 +214,8 @@ namespace Calculadora.ConsoleApp
         }
         static string OperacaoBaskara(double n1, double n2, double n3)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "";
             double x1, x2;
             int delta;
@@ -236,6 +252,8 @@ namespace Calculadora.ConsoleApp
         }
         static string MostrarHistorico(string[] historico)
         {
+            Console.Clear();
+            Cabecalho();
             string historicoCompleto = "";
             Console.WriteLine("_________");
             Console.WriteLine("Historico");
@@ -249,6 +267,8 @@ namespace Calculadora.ConsoleApp
         }
         static string OperacoNumeroPrimo(double n1)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "";
             bool zero = false;
             Console.Write("Digite o numero: ");
@@ -275,6 +295,8 @@ namespace Calculadora.ConsoleApp
         }
         static string OperacaoMediaAritimetica(double n1, double n2, double n3)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "";
             n3 = 0;
             Console.Write("Digite a quantidade de numeros: ");
@@ -293,8 +315,11 @@ namespace Calculadora.ConsoleApp
         }
         static string OperacaoModoFinanceiro(double n1, double n2, double n3)
         {
+            Console.Clear();
+            Cabecalho();
             string historico = "Em desenvolvimento...";
             Console.WriteLine("Em desenvolvimento...");
+            na--;
             return historico;
         }
     }
