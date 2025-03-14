@@ -10,9 +10,7 @@ namespace Calculadora.ConsoleApp
 
         static void Main(string[] args)
         {
-            double n1 = 0, n2 = 0, n3 = 0;
-            string[] historico = new string[99];
-
+            string[] H = new string[99];
             while (true)
             {
                 //Exibir o menu
@@ -20,54 +18,7 @@ namespace Calculadora.ConsoleApp
 
                 if (op[na] != 0)
                 {
-                    if (op[na] >= 1 && op[na] <= 4)
-                    {
-                        //Soma, Subtracao, Multiplicacao e Divisao
-                        historico[na] = OperacoesBasicas(n1, n2, n3);
-                    }
-                    else if (op[na] >= 5 && op[na] <= 8)
-                    {
-                        //Fatorial, Potenciacao(²), Potenciacao(n) e Raiz Quadrada
-                        historico[na] = OperacoesMedias(n1, n2, n3);
-                    }
-                    else if (op[na] == 9)
-                    {
-                        //Tabuada
-                        historico[na] = OperacaoTabuada(n1, n2);
-                    }
-                    else if (op[na] == 10)
-                    {
-                        //Historico
-                        MostrarHistorico(historico);
-                    }
-                    else if (op[na] == 11)
-                    {
-                        //Baskara
-                        historico[na] = OperacaoBaskara(n1, n2, n3);
-                    }
-                    else if (op[na] == 12)
-                    {
-                        //Numero Primo
-                        historico[na] = OperacoNumeroPrimo(n1);
-                    }
-                    else if (op[na] == 13)
-                    {
-                        //Media Aritmetica
-                        historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
-                    }
-                    else if (op[na] == 14)
-                    {
-                        //Modo Financeiro
-                        historico[na] = OperacaoModoFinanceiro(n1, n2, n3);
-                    }
-                    else
-                    {
-                        //Opcao Invalida
-                        Console.WriteLine("Opcao Invalida!!");
-                        continue;
-                    }
-                    na++;
-                    Console.ReadLine();
+                    VerificarOpcao(H);
                 }
                 else
                 {
@@ -141,16 +92,19 @@ namespace Calculadora.ConsoleApp
             Console.WriteLine("Resultado: " + n3.ToString("F5"));
             return historico;
         }
-        static string OperacoesMedias(double n1, double n2, double n3)
+        static string OperacoesAvancadas(double n1, double n2, double n3)
         {
             Console.Clear();
             Cabecalho();
+
             string historico = "";
             Console.Write("Digite o numero: ");
             n1 = int.Parse(Console.ReadLine()!);
+
             //Fatorial
             if (op[na] == 5)
             {
+                n3 = 1;
                 for (int i = 1; i <= n1; i++)
                 {
                     n3 *= (double)i;
@@ -321,6 +275,59 @@ namespace Calculadora.ConsoleApp
             Console.WriteLine("Em desenvolvimento...");
             na--;
             return historico;
+        }
+        static void VerificarOpcao(string[] historico)
+        {
+            double n1 = 0, n2 = 0, n3 = 0;
+
+            if (op[na] >= 1 && op[na] <= 4)
+            {
+                //Soma, Subtracao, Multiplicacao e Divisao
+                historico[na] = OperacoesBasicas(n1, n2, n3);
+            }
+            else if (op[na] >= 5 && op[na] <= 8)
+            {
+                //Fatorial, Potenciacao(²), Potenciacao(n) e Raiz Quadrada
+                historico[na] = OperacoesAvancadas(n1, n2, n3);
+            }
+            else if (op[na] == 9)
+            {
+                //Tabuada
+                historico[na] = OperacaoTabuada(n1, n2);
+            }
+            else if (op[na] == 10)
+            {
+                //Historico
+                MostrarHistorico(historico);
+            }
+            else if (op[na] == 11)
+            {
+                //Baskara
+                historico[na] = OperacaoBaskara(n1, n2, n3);
+            }
+            else if (op[na] == 12)
+            {
+                //Numero Primo
+                historico[na] = OperacoNumeroPrimo(n1);
+            }
+            else if (op[na] == 13)
+            {
+                //Media Aritmetica
+                historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
+            }
+            else if (op[na] == 14)
+            {
+                //Modo Financeiro
+                historico[na] = OperacaoModoFinanceiro(n1, n2, n3);
+            }
+            else
+            {
+                //Opcao Invalida
+                Console.WriteLine("Opcao Invalida!!");
+                n3--;
+            }
+            na++;
+            Console.ReadLine();
         }
     }
 }
