@@ -42,7 +42,7 @@ namespace Calculadora.ConsoleApp
 
             Console.WriteLine("-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
                 "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
-                "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
+                "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica");
             Console.WriteLine("--------------------------");
 
             byte op = byte.Parse(Console.ReadLine()!);
@@ -87,11 +87,6 @@ namespace Calculadora.ConsoleApp
                 //Media Aritmetica
                 historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
             }
-            else if (op[na] == 14)
-            {
-                //Modo Financeiro
-                historico[na] = OperacaoModoFinanceiro(n1, n2, n3);
-            }
             else
             {
                 //Opcao Invalida
@@ -132,10 +127,11 @@ namespace Calculadora.ConsoleApp
             //Divisao
             else if (op[na] == 4)
             {
-                if (n2 == 0)
+                while(n2 == 0)
                 {
                     Console.WriteLine("Nao pode divisao por zero!!!");
-                    Console.ReadLine();
+                    Console.Write("Digite o segundo numero: ");
+                    n2 = double.Parse(Console.ReadLine()!);
                 }
                 n3 = n1 / n2;
                 historico = $"{n1} / {n2} = {n3}";
@@ -183,10 +179,11 @@ namespace Calculadora.ConsoleApp
             //Raiz Quadrada
             else
             {
-                if (n1 < 0)
+                while(n1 < 0)
                 {
                     Console.WriteLine("Não existe raiz de número negativo!");
-                    Console.ReadLine();
+                    Console.Write("Digite o numero: ");
+                    n1 = int.Parse(Console.ReadLine()!);
                 }
                 n3 = Math.Sqrt(n1);
                 historico = $"Raiz de {n1} = {n3.ToString("F5")}";
@@ -316,15 +313,6 @@ namespace Calculadora.ConsoleApp
             n3 /= n1;
             Console.WriteLine("Media: " + n3.ToString("F5"));
             historico = $"Media: {n3.ToString("F5")}";
-            return historico;
-        }
-        static string OperacaoModoFinanceiro(double n1, double n2, double n3)
-        {
-            Console.Clear();
-            Cabecalho();
-            string historico = "Em desenvolvimento...";
-            Console.WriteLine("Em desenvolvimento...");
-            na--;
             return historico;
         }
     }
