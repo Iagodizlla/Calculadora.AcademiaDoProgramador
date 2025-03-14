@@ -5,26 +5,8 @@ namespace Calculadora.ConsoleApp
 {
     internal class Program
     {
-        /*objetivos;
-         * Soma(X)
-         * Subtracao(X)
-         * Multiplicacao(X)
-         * Divisao(X)
-         * Descobrir Raiz de numero(X)
-         * Potenciacao(X)
-         * Fatorial de um numero(X)
-         * Tabuada(X)
-         * Historico(X)
-         * Saida do programa(X)
-         * Baskara(X)
-         * Media Aritmetica(X)
-         * Número Primo(X)
-         */
         static void Main(string[] args)
         {
-            //Academia do Programador
-
-            //Criacao das variaveis
             double n1, n2, res;
             int n3, na = 0, n4, n5, delta;
             bool zero = false;
