@@ -1,423 +1,311 @@
 ﻿using System;
 using System.Data;
 
-namespace Calculadora.ConsoleApp
+namespace Calculadora.ConsoleApp;
+
+internal class Program
 {
-    internal class Program
+    //Variaveis globais
+    static int na = 0;
+    static byte[] op = new byte[99];
+    static void Main(string[] args)
     {
-        /*objetivos;
-         * Soma(X)
-         * Subtracao(X)
-         * Multiplicacao(X)
-         * Divisao(X)
-         * Descobrir Raiz de numero(X)
-         * Potenciacao(X)
-         * Fatorial de um numero(X)
-         * Tabuada(X)
-         * Historico(X)
-         * Saida do programa(X)
-         * Baskara(X)
-         * Media Aritmetica(X)
-         * Número Primo(X)
-         */
-        static void Main(string[] args)
+        string[] H = new string[99];
+        while (true)
         {
-            //Academia do Programador
-
-            //Criacao das variaveis
-            double n1, n2, res;
-            int n3, na = 0, n4, n5, delta;
-            bool zero = false;
-            byte[] op = new byte[99];
-            double[] nv = new double[99];
-            double[] nv2 = new double[99];
-            double[] nv3 = new double[99];
-            double[] n6 = new double[99];
-            double[] x1 = new double[99];
-            double[] x2 = new double[99];
-            char[] del = new char[99];
-
-            while (true)
+            op[na] = ExibirMenu();//Exibir o menu
+            if (op[na] != 0)
             {
-                res = 1;
-                Console.Clear();
-
-                Console.WriteLine("__________________________");
-                Console.WriteLine("Calculadora Tabajara 2025");
-                Console.WriteLine("--------------------------\n");
-                Console.WriteLine("\nQual opcao vc deseja?\n-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
-                    "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
-                    "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica\n-14. Modo_Financeiro");
-                op[na] = byte.Parse(Console.ReadLine());
-
-                if (op[na] != 0)
-                {
-                    if (op[na] >= 1 && op[na] <= 4)
-                    {
-                        Console.Write("Digite o primeiro numero: ");
-                        n1 = double.Parse(Console.ReadLine());
-                        Console.Write("Digite o segundo numero: ");
-                        n2 = double.Parse(Console.ReadLine());
-
-                        //Soma
-                        if (op[na] == 1)
-                        {
-                            res = n1 + n2;
-                        }
-                        //Subtracao
-                        else if (op[na] == 2)
-                        {
-                            res = n1 - n2;
-                        }
-                        //Multiplicacao
-                        else if (op[na] == 3)
-                        {
-                            res = n1 * n2;
-                        }
-                        //Divisao
-                        else
-                        {
-                            if (n2 == 0)
-                            {
-                                Console.WriteLine("Nao pode divisao por zero!!!");
-                                Console.ReadLine();
-                                continue;
-                            }
-                             res = n1 / n2;
-                        }
-
-                        //Guardando os valores no histórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n1;
-                            nv2[na] = n2;
-                            nv3[na] = res;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-
-                        Console.WriteLine("Resultado: " + res.ToString("F5"));
-                        Console.ReadLine();
-                    }
-                    else if (op[na] >= 5 && op[na] <= 8)
-                    {
-                        Console.Write("Digite o numero: ");
-                        n3 = int.Parse(Console.ReadLine());
-                        //Fatorial
-                        if (op[na] == 5)
-                        {
-                            for (int i = 1; i <= n3; i++)
-                            {
-                                res *= (double)i;
-                            }
-                        }
-                        //Potenciacao(²)
-                        else if (op[na] == 6)
-                        {
-                            res = n3 * n3;
-                            //res = Math.Pow(n3, 2);
-                        }
-                        //Potenciacao(n)
-                        else if (op[na] == 7)
-                        {
-                            Console.Write("Digite a potencia: ");
-                            n4 = int.Parse(Console.ReadLine());
-
-                            nv2[na] = n4;
-
-                            //res = Math.Pow(n3, n4);
-                            for (int i = 1; i <= n4; i++)
-                            {
-                                res *= n3;
-                            }
-                        }
-                        //Raiz Quadrada
-                        else
-                        {
-                            if (n3 < 0)
-                            {
-                                Console.WriteLine("Não existe raiz de número negativo!");
-                                Console.ReadLine();
-                                continue;
-                            }
-                            else
-                            {
-                                res = Math.Sqrt(n3);
-                            }
-                        }
-
-                        //Guardando os valores no hitórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n3;
-                            nv3[na] = res;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-                        Console.WriteLine("Resultado: " + res.ToString("F5"));
-                        Console.ReadLine();
-                    }
-                    //Tabuada
-                    else if (op[na] == 9)
-                    {
-                        Console.Write("Digite o numero: ");
-                        n3 = int.Parse(Console.ReadLine());
-
-                        Console.Write("Ate que numero vai a tabuada? ");
-                        n4 = int.Parse(Console.ReadLine());
-
-                        //Guardando os valores no hitórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n3;
-                            nv2[na] = n4;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-
-                        Console.WriteLine("____________");
-                        Console.WriteLine("Tabuada do " + n3);
-                        Console.WriteLine("------------");
-
-                        //Tabuada sendo feita
-                        for (int i = 0; i <= n4; i++)
-                        {
-                            Console.WriteLine($"{n3} x  {i}  =  {(n3 * i)}");
-                        }
-                        Console.ReadLine();
-                    }
-                    //Historico
-                    else if (op[na] == 10)
-                    {
-                        Console.WriteLine("_________");
-                        Console.WriteLine("Historico");
-                        Console.WriteLine("---------\n");
-
-                        //Visualizando o histórico
-                        for (int i = 0; i < na; i++)
-                        {
-                            //Verificando a operação
-                            if (op[i] == 1)
-                            {
-                                Console.WriteLine(nv[i] + " + " + nv2[i] + " = " + nv3[i]);
-                            }
-                            else if (op[i] == 2)
-                            {
-                                Console.WriteLine(nv[i] + " - " + nv2[i] + " = " + nv3[i]);
-                            }
-                            else if (op[i] == 3)
-                            {
-                                Console.WriteLine(nv[i] + " * " + nv2[i] + " = " + nv3[i]);
-                            }
-                            else if (op[i] == 4)
-                            {
-                                Console.WriteLine(nv[i] + " / " + nv2[i] + " = " + nv3[i].ToString("F5"));
-                            }
-                            else if (op[i] == 5)
-                            {
-                                Console.WriteLine(nv[i] + "! = " + nv3[i]);
-                            }
-                            else if (op[i] == 6)
-                            {
-                                Console.WriteLine(nv[i] + " ^ 2 = " + nv3[i]);
-                            }
-                            else if (op[i] == 7)
-                            {
-                                Console.WriteLine(nv[i] + " ^ " + nv2[i] + " = " + nv3[i]);
-                            }
-                            else if (op[i] == 8)
-                            {
-                                Console.WriteLine("Raiz de " + nv[i] + " = " + nv3[i].ToString("F5"));
-                            }
-                            else if (op[i] == 9)
-                            {
-                                Console.WriteLine($"Tabuada do {nv[i]} ao {nv2[i]}");
-                            }
-                            else if (op[i] == 11)
-                            {
-                                if (del[i] == '1')
-                                {
-                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || x1 = {x1[i].ToString("F5")} e x2 = {x2[i].ToString("F5")}");
-                                }
-                                else if (del[i] == '2')
-                                {
-                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || x = {x1[i].ToString("F5")}");
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"Baskara: a: {nv[i]} b: {nv2[i]} c: {nv3[i]} || Não possui raizes reais");
-                                }
-                            }
-                            else if (op[i] == 12)
-                            {
-                                if (nv2[i] == 1)
-                                {
-                                    Console.WriteLine(nv[i] + " é primo");
-                                }
-                                else
-                                {
-                                    Console.WriteLine(nv[i] + " não é primo");
-                                }
-                            }
-                            else if (op[i] == 13)
-                            {
-                                Console.Write($"Media dos numeros: (");
-                                for (int j = 0; j < nv[i]; j++)
-                                {
-                                    if (j == nv[i] - 1)
-                                    {
-                                        Console.Write($" {n6[j]}) = {nv3[i].ToString("F5")}");
-                                    }
-                                    else
-                                    {
-                                        Console.Write($" {n6[j]},");
-                                    }
-                                }
-                            }
-                        }
-                        Console.ReadLine();
-                    }
-                    //Baskara
-                    else if (op[na] == 11)
-                    {
-                        Console.Write("Digite o valor de A: ");
-                        n3 = int.Parse(Console.ReadLine());
-                        Console.Write("Digite o valor de B: ");
-                        n4 = int.Parse(Console.ReadLine());
-                        Console.Write("Digite o valor de C: ");
-                        n5 = int.Parse(Console.ReadLine());
-
-                        delta = (int)Math.Pow(n4, 2) - 4 * n3 * n5;
-
-                        if (delta > 0)
-                        {
-                            x1[na] = (double)((-n4 + Math.Sqrt(delta)) / 2 * n3);
-                            x2[na] = (double)((-n4 - Math.Sqrt(delta)) / 2 * n3);
-                            del[na] = '1';
-                            Console.WriteLine($"Delta: {delta.ToString("F5")}, X1: {x1[na].ToString("F5")}, X2: {x2[na].ToString("F5")}");
-                        }
-                        else if (delta == 0)
-                        {
-                            x1[na] = -n4 / (2 * n3);
-                            del[na] = '2';
-                            Console.WriteLine($"Delta: {delta.ToString("F5")}, X: {x1[na].ToString("F5")}");
-                        }
-                        else
-                        {
-                            del[na] = '3';
-                            Console.WriteLine($"Delta: {delta.ToString("F5")}, Não possui raizes reais");
-                        }
-                        //Guardando os valores no hitórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n3;
-                            nv2[na] = n4;
-                            nv3[na] = n5;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-                        Console.ReadLine();
-
-                    }
-                    //Numero Primo
-                    else if (op[na] == 12)
-                    {
-                        zero = false;
-                        Console.Write("Digite o numero: ");
-                        n3 = int.Parse(Console.ReadLine());
-                        for (int i = 2; i < n3; i++)
-                        {
-                            if (n3 % i == 0)
-                            {
-                                zero = true;
-                                break;
-                            }
-                        }
-                        if (zero == false)
-                        {
-                            Console.WriteLine("O numero " + n3 + " é primo");
-                            n4 = 1;
-                        }
-                        else
-                        {
-                            Console.WriteLine("O numero " + n3 + " não é primo");
-                            n4 = 2;
-                        }
-                        //Guardando os valores no hitórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n3;
-                            nv2[na] = n4;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-                        Console.ReadLine();
-                    }
-                    //Media Aritmetica
-                    else if (op[na] == 13)
-                    {
-                        n6[0] = 0; 
-                        res = 0;
-                        Console.Write("Digite a quantidade de numeros: ");
-                        n1 = double.Parse(Console.ReadLine());
-
-                        for (int i = 0; i < n1; i++)
-                        {
-                            Console.Write("Digite o numero: ");
-                            n6[i] = double.Parse(Console.ReadLine());
-                            res += n6[i];
-                        }
-                        res /= n1;
-
-                        //Guardando os valores no hitórico
-                        if (na < nv.Length)
-                        {
-                            nv[na] = n1;
-                            nv3[na] = res;
-                            na++;
-                        }
-                        //Verificando se o histórico está cheio
-                        else
-                        {
-                            Console.WriteLine("\nHistórico cheio!\n");
-                        }
-
-                        Console.WriteLine("Media: " + res.ToString("F5"));
-                        Console.ReadLine();
-                    }
-                    //Opcao Invalida
-                    else
-                    {
-                        Console.WriteLine("Opcao Invalida!!");
-                        Console.ReadLine();
-                    }
-                }
-                //Finalizando o programa
-                else
-                {
-                    break;
-                }
+                VerificarOpcao(H);//verificar a opcao
+            }
+            else
+            {
+                break;//Finaliza o programa
             }
         }
+    }
+    static void Cabecalho()
+    {
+        Console.WriteLine("__________________________");
+        Console.WriteLine("Calculadora Tabajara 2025");
+        Console.WriteLine("--------------------------\n");
+    }
+    static byte ExibirMenu()
+    {
+        Console.Clear();
+        Cabecalho();
+
+        Console.WriteLine("__________________________");
+        Console.WriteLine("Qual opcao vc deseja?");
+        Console.WriteLine("--------------------------");
+
+        Console.WriteLine("-0. Sair\n-1. Soma\n-2. Subtracao\n-3. Multiplicacao" +
+            "\n-4. Divisao\n-5. Fatorial\n-6. Potenciacao(²)\n-7. Potenciacao(n)\n-8. Raiz_Quadrada\n-9. Tabuada" +
+            "\n-10. Historico\n-11. Baskara\n-12. Numero_Primo\n-13. Media_Aritimetica");
+        Console.WriteLine("--------------------------");
+
+        byte op = byte.Parse(Console.ReadLine()!);
+        return op;
+    }
+    static void VerificarOpcao(string[] historico)
+    {
+        double n1 = 0, n2 = 0, n3 = 0;
+
+        if (op[na] >= 1 && op[na] <= 4)
+        {
+            //Soma, Subtracao, Multiplicacao e Divisao
+            historico[na] = OperacoesBasicas(n1, n2, n3);
+        }
+        else if (op[na] >= 5 && op[na] <= 8)
+        {
+            //Fatorial, Potenciacao(²), Potenciacao(n) e Raiz Quadrada
+            historico[na] = OperacoesAvancadas(n1, n2, n3);
+        }
+        else if (op[na] == 9)
+        {
+            //Tabuada
+            historico[na] = OperacaoTabuada(n1, n2);
+        }
+        else if (op[na] == 10)
+        {
+            //Historico
+            MostrarHistorico(historico);
+        }
+        else if (op[na] == 11)
+        {
+            //Baskara
+            historico[na] = OperacaoBaskara(n1, n2, n3);
+        }
+        else if (op[na] == 12)
+        {
+            //Numero Primo
+            historico[na] = OperacaoNumeroPrimo(n1);
+        }
+        else if (op[na] == 13)
+        {
+            //Media Aritmetica
+            historico[na] = OperacaoMediaAritimetica(n1, n2, n3);
+        }
+        else
+        {
+            //Opcao Invalida
+            Console.WriteLine("Opcao Invalida!!");
+            n3--;
+        }
+        na++;
+        Console.ReadLine();
+    }
+    static string OperacoesBasicas(double n1, double n2, double n3)
+    {
+        Console.Clear();
+        Cabecalho();
+        string historico = "";
+        Console.Write("Digite o primeiro numero: ");
+        n1 = double.Parse(Console.ReadLine()!);
+        Console.Write("Digite o segundo numero: ");
+        n2 = double.Parse(Console.ReadLine()!);
+
+        //Soma
+        if (op[na] == 1)
+        {
+            n3 = Calculadora.Somar(n1, n2);
+            historico = $"{n1} + {n2} = {n3}";
+        }
+        //Subtracao
+        else if (op[na] == 2)
+        {
+            n3 = Calculadora.Subtrair(n1, n2);
+            historico = $"{n1} - {n2} = {n3}";
+        }
+        //Multiplicacao
+        else if (op[na] == 3)
+        {
+            n3 = Calculadora.Multiplicar(n1, n2);
+            historico = $"{n1} * {n2} = {n3}";
+        }
+        //Divisao
+        else if (op[na] == 4)
+        {
+            while(n2 == 0)
+            {
+                Console.WriteLine("Nao pode divisao por zero!!!");
+                Console.Write("Digite o segundo numero: ");
+                n2 = double.Parse(Console.ReadLine()!);
+            }
+            n3 = Calculadora.Dividir(n1, n2);
+            historico = $"{n1} / {n2} = {n3}";
+        }
+        Console.WriteLine("Resultado: " + n3.ToString("F5"));
+        return historico;
+    }
+    static string OperacoesAvancadas(double n1, double n2, double n3)
+    {
+        Console.Clear();
+        Cabecalho();
+
+        string historico = "";
+        Console.Write("Digite o numero: ");
+        n1 = int.Parse(Console.ReadLine()!);
+
+        //Fatorial
+        if (op[na] == 5)
+        {
+            n3 = Calculadora.Fatorial(n1, n3);
+            historico = $"{n1}! = {n3}";
+        }
+        //Potenciacao(²)
+        else if (op[na] == 6)
+        {
+            n2 = 2;
+            n3 = Calculadora.Potencial(n1, n2);
+            historico = $"{n1} ^ 2 = {n3}";
+        }
+        //Potenciacao(n)
+        else if (op[na] == 7)
+        {
+            Console.Write("Digite a potencia: ");
+            n2 = int.Parse(Console.ReadLine()!);
+
+            n3 = Calculadora.Potencial(n1, n2);
+            historico = $"{n1} ^ {n2} = {n3}";
+        }
+        //Raiz Quadrada
+        else
+        {
+            while(n1 < 0)
+            {
+                Console.WriteLine("Não existe raiz de número negativo!");
+                Console.Write("Digite o numero: ");
+                n1 = int.Parse(Console.ReadLine()!);
+            }
+            n3 = Calculadora.RaizQuadrada(n1);
+            historico = $"Raiz de {n1} = {n3.ToString("F5")}";
+        }
+        Console.WriteLine("Resultado: " + n3.ToString("F5"));
+        return historico;
+    }
+    static string OperacaoTabuada(double n1, double n2)
+    {
+        Console.Clear();
+        Cabecalho();
+
+        string historico = "";
+        Console.Write("Digite o numero: ");
+        n1 = int.Parse(Console.ReadLine()!);
+
+        Console.Write("Ate que numero vai a tabuada? ");
+        n2 = int.Parse(Console.ReadLine()!);
+        string[] tabu = new string[(int)n2];
+
+        Console.WriteLine("_____________");
+        Console.WriteLine("Tabuada do " + n1);
+        Console.WriteLine("-------------");
+
+        //Tabuada sendo feita
+        for(int i = 0; i < n2; i++)
+        {
+            tabu[i] = Calculadora.Tabuada(n1, n2, i);
+            Console.WriteLine(tabu[i]);
+        }
+        historico = $"Tabuada do {n1} ao {n2}";
+        return historico;
+    }
+    static string OperacaoBaskara(double n1, double n2, double n3)
+    {
+        Console.Clear();
+        Cabecalho();
+        string historico = "";
+        double x1, x2, delta;
+
+        Console.Write("Digite o valor de A: ");
+        n1 = double.Parse(Console.ReadLine()!);
+        Console.Write("Digite o valor de B: ");
+        n2 = double.Parse(Console.ReadLine()!);
+        Console.Write("Digite o valor de C: ");
+        n3 = double.Parse(Console.ReadLine()!);
+
+        delta = Calculadora.Delta(n1, n2, n3);
+
+        if (delta > 0)
+        {
+            x1 = Calculadora.BhaskaraX1(n1, n2, delta);
+            x2 = Calculadora.BhaskaraX2(n1, n2, delta);
+
+            Console.WriteLine($"Delta: {delta.ToString("F5")}| X1: {x1.ToString("F5")}| X2: {x2.ToString("F5")}");
+            historico = $"Delta: {delta.ToString("F5")}| X1: {x1.ToString("F5")}| X2: {x2.ToString("F5")}";
+        }
+        else if (delta == 0)
+        {
+            x1 = Calculadora.BhaskaraDelstaZero(n1, n2);
+            Console.WriteLine($"Delta: {delta.ToString("F5")}| X: {x1.ToString("F5")}");
+            historico = $"Delta: {delta.ToString("F5")}| X: {x1.ToString("F5")}";
+        }
+        else
+        {
+            Console.WriteLine($"Delta: {delta.ToString("F5")}| Não possui raizes reais");
+            historico = $"Delta: {delta.ToString("F5")}| Não possui raizes reais";
+        }
+        return historico;
+    }
+    static string MostrarHistorico(string[] historico)
+    {
+        Console.Clear();
+        Cabecalho();
+
+        string historicoCompleto = "";
+        Console.WriteLine("_________");
+        Console.WriteLine("Historico");
+        Console.WriteLine("---------\n");
+
+        for (int i = 0; i < na; i++)
+        {
+            historicoCompleto += historico[i] + "\n";
+        }
+        Console.WriteLine(historicoCompleto);
+        return historicoCompleto;
+    }
+    static string OperacaoNumeroPrimo(double n1)
+    {
+        Console.Clear();
+        Cabecalho();
+        string historico = "";
+        bool zero = false;
+        Console.Write("Digite o numero: ");
+        n1 = int.Parse(Console.ReadLine()!);
+
+        zero = Calculadora.NumeroPrimo(n1) == 0 ? true : false;
+
+        if (zero == false)
+        {
+            Console.WriteLine("O numero " + n1 + " é primo");
+            historico = $"{n1} é primo";
+        }
+        else
+        {
+            Console.WriteLine("O numero " + n1 + " não é primo");
+            historico = $"{n1} não é primo";
+        }
+        return historico;
+    }
+    static string OperacaoMediaAritimetica(double n1, double n2, double n3)
+    {
+        Console.Clear();
+        Cabecalho();
+        string historico = "";
+        n3 = 0;
+        Console.Write("Digite a quantidade de numeros: ");
+        n1 = double.Parse(Console.ReadLine()!);
+        int[] n4 = new int[(int)n1];
+
+        for (int i = 0; i < n1; i++)
+        {
+            Console.Write("Digite o numero: ");
+            n4[i] = int.Parse(Console.ReadLine()!);
+        }
+        n3 = Calculadora.Media(n1, n2, n4);
+
+        Console.WriteLine("Media: " + n3.ToString("F5"));
+        historico = $"Media: {n3.ToString("F5")}";
+        return historico;
     }
 }
