@@ -6,6 +6,12 @@
 
 Uma calculadora de console simples mas poderosa que permite realizar operações formulas matemáticas.
 
+---
+## Tecnologias
+
+[![Tecnologias](https://skillicons.dev/icons?i=git,github,cs,dotnet,visualstudio)](https://skillicons.dev)
+
+---
 ## Funcionalidades
 
 - **Operações Básicas**: Realize somas, subtrações, multiplicações, divisões, raiz quadrada e potenciação com facilidade.
